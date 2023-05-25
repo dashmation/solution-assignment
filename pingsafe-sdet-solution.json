@@ -1,0 +1,889 @@
+{
+	"info": {
+		"_postman_id": "e5006f45-f3bd-45ac-9e6e-e63ff2595662",
+		"name": "pingsafecustomerAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4995137"
+	},
+	"item": [
+		{
+			"name": "createcustomer",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomId = _.random(1,1000)",
+							"pm.collectionVariables.set(\"id\", randomId)",
+							"",
+							"const randomNumber = _.random(6000000000,9999999999)",
+							"pm.collectionVariables.set(\"randomNumber\", randomNumber)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "{{x-session-token}}",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user-agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"{{id}}\",\n    \"name\":\"{{$randomFirstName}}\",\n    \"phone_number\":\"{{randomNumber}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getcustomerBasedOnId",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "{{x-session-token}}",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user-agent}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseurl}}/api?id={{id}}",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getcustomerBasedOnMobile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "{{x-session-token}}",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user-agent}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseurl}}/api?phone_number={{randomNumber}}",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					],
+					"query": [
+						{
+							"key": "phone_number",
+							"value": "{{randomNumber}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatecustomer",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomNumber = _.random(6000000000,9999999999)",
+							"pm.collectionVariables.set(\"randomNumber\", randomNumber)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "{{x-session-token}}",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user-agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"1\",\n    \"name\":\"subhrajyoti\",\n    \"phone_number\":\"8897800011\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api?id=1",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcustomer_duplicateId",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomId = _.random(1,1000)",
+							"id = pm.collectionVariables.get(\"id\")",
+							"",
+							"const randomNumber = _.random(6000000000,9999999999)",
+							"pm.collectionVariables.set(\"randomNumber\", randomNumber)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "{{x-session-token}}",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user-agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"{{id}}\",\n    \"name\":\"{{$randomFirstName}}\",\n    \"phone_number\":\"{{randomNumber}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcustomer_WithBot",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomId = _.random(1,1000)",
+							"id = pm.collectionVariables.get(\"id\")",
+							"",
+							"const randomNumber = _.random(6000000000,9999999999)",
+							"pm.collectionVariables.set(\"randomNumber\", randomNumber)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "{{x-session-token}}",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "subhrajyoti_bot",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"{{id}}\",\n    \"name\":\"{{$randomFirstName}}\",\n    \"phone_number\":\"{{randomNumber}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcustomer_withoutSessionToken",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomId = _.random(1,1000)",
+							"id = pm.collectionVariables.get(\"id\")",
+							"",
+							"const randomNumber = _.random(6000000000,9999999999)",
+							"pm.collectionVariables.set(\"randomNumber\", randomNumber)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user-agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"{{id}}\",\n    \"name\":\"{{$randomFirstName}}\",\n    \"phone_number\":\"{{randomNumber}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcustomer_Name>50",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomId = _.random(1,1000)",
+							"pm.collectionVariables.set(\"id\", randomId)",
+							"",
+							"const randomNumber = _.random(6000000000,9999999999)",
+							"pm.collectionVariables.set(\"randomNumber\", randomNumber)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "{{x-session-token}}",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user-agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"{{id}}\",\n    \"name\":\"subhrajyotidashsubhrajyotidashsubhrajyotidashsubhrajyotidashsubhrajyotidashsubhrajyotidashsubhrajyotidashsubhrajyotidashsubhrajyotidashsubhrajyotidashsubhrajyotidashsubhrajyotidashsubhrajyotidash\",\n    \"phone_number\":\"{{randomNumber}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcustomer_mobile>10",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomId = _.random(1,1000)",
+							"pm.collectionVariables.set(\"id\", randomId)",
+							"",
+							"const randomNumber = _.random(6000000000,9999999999)",
+							"pm.collectionVariables.set(\"randomNumber\", randomNumber)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "{{x-session-token}}",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user-agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"{{id}}\",\n    \"name\":\"{{$randomFirstName}}\",\n    \"phone_number\":\"88978000101\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcustomer_mobile<10",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomId = _.random(1,1000)",
+							"pm.collectionVariables.set(\"id\", randomId)",
+							"",
+							"const randomNumber = _.random(6000000000,9999999999)",
+							"pm.collectionVariables.set(\"randomNumber\", randomNumber)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "{{x-session-token}}",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user-agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"{{id}}\",\n    \"name\":\"{{$randomFirstName}}\",\n    \"phone_number\":\"889780001\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcustomer_withoutMobile",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomId = _.random(1,1000)",
+							"pm.collectionVariables.set(\"id\", randomId)",
+							"",
+							"const randomNumber = _.random(6000000000,9999999999)",
+							"pm.collectionVariables.set(\"randomNumber\", randomNumber)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "{{x-session-token}}",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user-agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"{{id}}\",\n    \"name\":\"{{$randomFirstName}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcustomer_withoutId",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomId = _.random(1,1000)",
+							"pm.collectionVariables.set(\"id\", randomId)",
+							"",
+							"const randomNumber = _.random(6000000000,9999999999)",
+							"pm.collectionVariables.set(\"randomNumber\", randomNumber)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "{{x-session-token}}",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user-agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"{{$randomFirstName}}\",\n    \"phone_number\":\"{{randomNumber}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcustomer_nameWithSpecialChar",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomId = _.random(1,1000)",
+							"pm.collectionVariables.set(\"id\", randomId)",
+							"",
+							"const randomNumber = _.random(6000000000,9999999999)",
+							"pm.collectionVariables.set(\"randomNumber\", randomNumber)",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "{{x-session-token}}",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user-agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"{{id}}\",\n    \"name\":\"{{$randomFirstName}}*\",\n    \"phone_number\":\"{{randomNumber}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcustomer_FirstLastName",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomId = _.random(1,1000)",
+							"pm.collectionVariables.set(\"id\", randomId)",
+							"",
+							"const randomNumber = _.random(6000000000,9999999999)",
+							"pm.collectionVariables.set(\"randomNumber\", randomNumber)",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-session-token",
+						"value": "{{x-session-token}}",
+						"type": "text"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user-agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"{{id}}\",\n    \"name\":\"{{$randomFirstName}} {{$randomLastName}}\",\n    \"phone_number\":\"{{randomNumber}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"env = pm.globals.get('env')",
+					"if(env == 'local'){",
+					"    pm.collectionVariables.set('baseurl','http://127.0.0.1:8080');",
+					"}else if(env == 'stage'){",
+					"    pm.collectionVariables.set('baseurl','http://127.0.0.1:8080');",
+					"}else if(env == 'ppd'){",
+					"    pm.collectionVariables.set('baseurl','http://127.0.0.1:8080');",
+					"}else if(env == 'prod'){",
+					"    pm.collectionVariables.set('baseurl','http://127.0.0.1:8080');",
+					"}else{",
+					"    pm.collectionVariables.set('baseurl','http://127.0.0.1:8080');",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var request_Method_Name = pm.info.requestName;",
+					"var jsonData = null;",
+					"",
+					"switch (request_Method_Name) {",
+					"    case 'createcustomer':",
+					"        jsonData = pm.response.json();",
+					"        pm.test(\"Status code is 200\", () => {",
+					"            pm.response.to.have.status(200);",
+					"        });",
+					"",
+					"        pm.test(\"Reponse value check\", function() {",
+					"            pm.expect(jsonData.message).to.eql('customer created');",
+					"        });",
+					"        break;",
+					"",
+					"    case 'getcustomerBasedOnId':",
+					"        pm.test(\"Status code is 200\", () => {",
+					"            pm.response.to.have.status(200);",
+					"        });",
+					"        break;",
+					"",
+					"    case 'getcustomerBasedOnMobile':",
+					"        pm.test(\"Status code is 200\", () => {",
+					"            pm.response.to.have.status(200);",
+					"        });",
+					"        break;",
+					"    case 'updatecustomer':",
+					"        pm.test(\"Status code is 200\", () => {",
+					"            pm.response.to.have.status(200);",
+					"        });",
+					"        break;",
+					"",
+					"    case 'createcustomer_duplicateId':",
+					"        jsonData = pm.response.json();",
+					"        pm.test(\"Status code is 500\", () => {",
+					"            pm.response.to.have.status(500);",
+					"        });",
+					"        pm.test(\"Reponse value check\", function() {",
+					"            pm.expect(jsonData.error).to.eql('UNIQUE constraint failed: customers.id');",
+					"        });",
+					"        break;",
+					"",
+					"    case 'createcustomer_WithBot':",
+					"        jsonData = pm.response.json();",
+					"        pm.test(\"Status code is 400\", () => {",
+					"            pm.response.to.have.status(400);",
+					"        });",
+					"        pm.test(\"Reponse value check\", function() {",
+					"            pm.expect(jsonData.error).to.eql('bad bot, go away!');",
+					"        });",
+					"        break;",
+					"",
+					"    case 'createcustomer_withoutSessionToken':",
+					"        jsonData = pm.response.json();",
+					"        pm.test(\"Status code is 403\", () => {",
+					"            pm.response.to.have.status(403);",
+					"        });",
+					"        pm.test(\"Reponse value check\", function() {",
+					"            pm.expect(jsonData.error).to.eql('request cannot be authenticated!');",
+					"        });",
+					"        break;",
+					"",
+					"    case 'createcustomer_Name>50':",
+					"        jsonData = pm.response.json();",
+					"        pm.test(\"Status code is 500\", () => {",
+					"            pm.response.to.have.status(500);",
+					"        });",
+					"        pm.test(\"Reponse value check\", function() {",
+					"            pm.expect(jsonData.error).to.eql('CHECK constraint failed: length(name) <= 50');",
+					"        });",
+					"        break;",
+					"",
+					"    case 'createcustomer_mobile>10':",
+					"    case 'createcustomer_mobile<10':",
+					"        jsonData = pm.response.json();",
+					"        pm.test(\"Status code is 500\", () => {",
+					"            pm.response.to.have.status(500);",
+					"        });",
+					"        pm.test(\"Reponse value check\", function() {",
+					"            pm.expect(jsonData.error).to.eql('CHECK constraint failed: length(phone_number) = 10');",
+					"        });",
+					"        break;",
+					"",
+					"    case 'createcustomer_withoutMobile':",
+					"        jsonData = pm.response.json();",
+					"        pm.test(\"Status code is 400\", () => {",
+					"            pm.response.to.have.status(400);",
+					"        });",
+					"        pm.test(\"Reponse value check\", function() {",
+					"            pm.expect(jsonData.error).to.eql(\"Key: 'Customer.PhoneNumber' Error:Field validation for 'PhoneNumber' failed on the 'required' tag\");",
+					"        });",
+					"        break;",
+					"",
+					"    case 'createcustomer_withoutId':",
+					"        jsonData = pm.response.json();",
+					"        pm.test(\"Status code is 400\", () => {",
+					"            pm.response.to.have.status(400);",
+					"        });",
+					"        pm.test(\"Reponse value check\", function() {",
+					"            pm.expect(jsonData.error).to.eql(\"Key: 'Customer.ID' Error:Field validation for 'ID' failed on the 'required' tag\");",
+					"        });",
+					"        break;",
+					"",
+					"    case 'createcustomer_nameWithSpecialChar':",
+					"        jsonData = pm.response.json();",
+					"        pm.test(\"Status code is 400\", () => {",
+					"            pm.response.to.have.status(400);",
+					"        });",
+					"        pm.test(\"Reponse value check\", function() {",
+					"            pm.expect(jsonData.error).to.eql('name has special characters');",
+					"        });",
+					"        break;",
+					"",
+					"    case 'createcustomer_FirstLastName':",
+					"        jsonData = pm.response.json();",
+					"        pm.test(\"Status code is 200\", () => {",
+					"            pm.response.to.have.status(200);",
+					"        });",
+					"",
+					"        pm.test(\"Reponse value check\", function() {",
+					"            pm.expect(jsonData.message).to.eql('customer created');",
+					"        });",
+					"        break;",
+					"",
+					"    default:",
+					"        break;",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "randomNumber",
+			"value": ""
+		},
+		{
+			"key": "baseurl",
+			"value": "http://127.0.0.1:8080",
+			"type": "string"
+		},
+		{
+			"key": "x-session-token",
+			"value": "authorized-user",
+			"type": "string"
+		},
+		{
+			"key": "user-agent",
+			"value": "subhrajyoti",
+			"type": "string"
+		},
+		{
+			"key": "id",
+			"value": ""
+		}
+	]
+}
