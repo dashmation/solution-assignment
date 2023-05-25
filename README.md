@@ -14,3 +14,5 @@ Steps:
 
 # Report Snapshots
 <img width="1120" alt="image" src="https://github.com/dashmation/solution-assignment/assets/44187454/f364749b-c7f6-4949-b87e-2ed84d34c90e">
+
+<img width="1111" alt="image" src="https://github.com/dashmation/solution-assignment/assets/44187454/c1b0ee45-70d0-4dab-8c6a-907aef9a5f77">
